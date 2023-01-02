@@ -8,12 +8,14 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       {!currentSubject ? (
-        <Focus addSubject={setCurrentSubject} />
+        <>
+          <Focus addSubject={setCurrentSubject} />
+        </>
       ) : (
         <Timer
           focusSubject={currentSubject}
           onTimeEnd={() => {}}
-          clearSubject={() => {}}
+          clearSubject={() => setCurrentSubject(null)}
         />
       )}
     </SafeAreaView>

@@ -11,12 +11,14 @@ export const Countdown = ({minutes = 0.1, isPaused, onProgress, onEnd}) => {
 
   const [millis, setMillis] = useState(null);
 
+  const reset = () => setMillis(minutesToMillis(minutes));
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const countDown = () => {
     setMillis(time => {
       if (time === 0) {
         clearInterval(interval.current);
-        onEnd();
+        onEnd(reset);
         return time;
       }
       const timeLeft = time - 1000;
