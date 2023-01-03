@@ -30,9 +30,7 @@ const Focus = ({addSubject}) => {
 export default Focus;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: {},
   inputtext: {
     flex: 1,
     marginRight: Spaceing.md,

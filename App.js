@@ -3,18 +3,24 @@ import React, {useState} from 'react';
 import {Colors} from './src/utils/Colors';
 import Focus from './src/features/Focus';
 import {Timer} from './src/features/Timer';
+import {FocusHistory} from './src/features/FocusHistory';
+
 const App = () => {
   const [currentSubject, setCurrentSubject] = useState();
+  const [history, setHistory] = useState([]);
   return (
     <SafeAreaView style={styles.container}>
       {!currentSubject ? (
         <>
           <Focus addSubject={setCurrentSubject} />
+          <FocusHistory history={history} />
         </>
       ) : (
         <Timer
           focusSubject={currentSubject}
-          onTimeEnd={() => {}}
+          onTimerEnd={subject => {
+            setHistory([...history, subject]);
+          }}
           clearSubject={() => setCurrentSubject(null)}
         />
       )}
